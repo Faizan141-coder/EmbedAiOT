@@ -62,7 +62,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
         <MainNav />
 
-        <h1 className="cursor-pointer" onClick={() => router.push('/')}>Home</h1>
+        <h1 className="cursor-pointer" onClick={() => router.push('/overview')}>Overview</h1>
         <h1 className="cursor-pointer">
           <div
             className='relative'
