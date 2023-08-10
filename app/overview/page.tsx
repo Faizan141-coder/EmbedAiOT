@@ -61,25 +61,9 @@ const Page: React.FC = () => {
                     <h1 className="text-[16px]">Products in Stock</h1>
                     <Package className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <p className='mt-2 text-[24px] font-bold'>7</p>
+                <p className='mt-2 text-[24px] font-bold'>{inventory.length}</p>
             </div> 
         </div>
-
-        {/* Clicks */}
-        {/* <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {inventory.map((product, index) => (
-                <div
-                    className={`mt-5 w-[25%] rounded-lg border p-5`}
-                    key={product.id}
-                >
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h1 className="text-[16px]">Clicks</h1>
-                        <MousePointer2 className="h-4 w-4 text-muted-foreground" />
-                    </div>
-                    <p className="mt-2 text-[24px] font-bold">{clickCounts[product.id] || 0}</p>
-                </div>
-            ))}
-        </div> */}
 
         <div>
             <button className="mt-5 rounded-lg bg-violet-600 px-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500" onClick={toggleClicks}>{showClicks ? 'Hide Clicks' : 'Show Clicks'}</button>
