@@ -165,18 +165,13 @@ export function SiteHeader() {
 
           <ThemeToggle />
 
-          {/* {process.env.NODE_ENV === "development" && (
+          {/* {process.env.NODE_ENV === "development" && ( */}
             <Link href="/studio">
               <Button size="sm" variant="ghost">
                 <Edit className="h-5 w-5" />
               </Button>
             </Link>
-          )} */}
-          <Link href="/studio">
-            <Button size="sm" variant="ghost">
-              <Edit className="h-5 w-5" />
-            </Button>
-          </Link>
+          {/* )} */}
           <UserButton afterSignOutUrl="/" />
       </div>
       </div>
