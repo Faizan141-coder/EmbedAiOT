@@ -17,13 +17,25 @@ import { ThemeToggle } from "@/components/theme-toggle"
 export function SiteHeader() {
 
   const router = useRouter()
+
   const { cartCount } = useShoppingCart()
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [clickCounts, setClickCounts] = useState<{ [productId: string]: number }>({});
-
+  
   const [showProductsDropdown, setShowProductsDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [showResourcesDropdown, setShowResourcesDropdown] = useState(false);
+
+  const username = "admin";
+  const password = "admin";
+
+  const isAdminLoggedIn = (username: string, password: string) => {
+    if (username === "admin" && password === "admin") {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const handleProductClick = (productId: string) => {
     setClickCounts((prevClickCounts) => ({
@@ -62,7 +74,17 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
         <MainNav />
 
-        <h1 className="cursor-pointer" onClick={() => router.push('/overview')}>Overview</h1>
+        {isAdminLoggedIn(username, password) ? null : (
+          <h1 className="cursor-pointer" onClick={() => router.push('/')}>
+            Home
+          </h1>
+        )}
+
+        {isAdminLoggedIn(username, password) && (
+          <h1 className="cursor-pointer" onClick={() => router.push('/overview')}>
+            Overview
+          </h1>
+        )}
         <h1 className="cursor-pointer">
           <div
             className='relative'
