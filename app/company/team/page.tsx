@@ -6,6 +6,7 @@ const Page: React.FC = () => {
     <div>
       <div className="my-10 px-52">
 
+        <div className="flex flex-col items-center justify-center">
         <div className="text-justify">
             <div className="flex-wrap">
                 <h1 className="text-[44px] font-semibold">
@@ -14,17 +15,19 @@ const Page: React.FC = () => {
             </div>
         </div>
 
-        <h1 className='mt-10 px-24 pt-5 text-center text-4xl font-bold'><span className="text-blue-400">CEO</span></h1>
-        <div className="mt-5 flex flex-wrap items-start space-x-10">
-            <div className="flex flex-col items-center justify-center">
+          <h1 className='mt-10 px-24 text-center text-4xl font-bold'>
+            <span className="text-blue-400">CEO</span>
+          </h1>
+          <div className="mt-5 flex flex-wrap space-x-10">
+            <div className="flex flex-col items-center">
               <div className="mx-auto mb-2 h-36 w-36 overflow-hidden rounded-full">
                 <Image src="/persons/2222.png" alt="Dr. Shehzad Younas" width="150" height="150" />
               </div>
               <p className="mb-1 text-center text-xl font-bold">Dr. Shahzad Younis</p>
               <p className="text-center">(Director & CEO)</p>
             </div>
-        </div>
-
+          </div>
+        
         <h1 className='mt-10 px-24 pt-5 text-center text-4xl font-bold'><span className="text-blue-400">Team Leads</span></h1>
         <div className="mt-5 flex flex-wrap items-start space-x-10">
             <div className="flex flex-col items-center justify-center">
@@ -71,6 +74,7 @@ const Page: React.FC = () => {
             <p className="text-center">(Senior Research Scientist)</p>
           </div>
         </div>
+        
 
         <h1 className='mt-5 px-24 pt-5 text-center text-4xl font-bold'><span className="text-blue-400">Sales & Marketing</span></h1>
         <div className="mt-5 flex flex-wrap items-start space-x-10">
@@ -91,6 +95,7 @@ const Page: React.FC = () => {
             <p className="text-center">(Product Designer)</p>
           </div>
           
+        </div>
         </div>
       </div>
     </div>
