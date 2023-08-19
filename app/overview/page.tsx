@@ -1,6 +1,5 @@
 'use client'
 
-import { getGraphRevenue } from "@/actions/get-graph-revenue";
 import { inventory } from "@/config/inventory";
 import { MousePointer2 } from "lucide-react";
 import { useState } from "react";
@@ -24,7 +23,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className="p-10">                
+    <div className="p-10">
         <div className='flex'>
             <div className='flex-wrap'>
                 <h1 className='text-[36px] font-bold'>Dashboard</h1>
@@ -43,7 +42,7 @@ const Page: React.FC = () => {
                             <h1 className="text-[16px]">{product.name} Clicks</h1>
                             <MousePointer2 className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <p className="mt-2 text-[24px] font-bold">{clickCounts[product.id] || 0}</p>
+                        <p className="mt-2 text-[24px] font-bold">{product.clicks}</p>
                     </div>
                 ))}
             </div>

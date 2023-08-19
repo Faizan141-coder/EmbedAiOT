@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 import { urlForImage } from "@/sanity/lib/image";
 import { XCircle } from "lucide-react";
 import { formatCurrencyString } from "use-shopping-cart";
@@ -15,17 +16,44 @@ interface Props {
 }
 
 export function ProductGrid({ products }: Props) {
-
+  
   const [clickCounts, setClickCounts] = useState<{ [productId: string]: number }>({});
   
-  const handleProductClick = (productId: string) => {
-    setClickCounts((prevClickCounts) => ({
-      ...prevClickCounts,
-      [productId]: (prevClickCounts[productId] || 0) + 1,
-    }));
-
-    console.log(`Product ${productId} clicked! Click count: ${clickCounts[productId] || 1}`);
+  const handleProductClick = async (productId: string) => {
+    try {
+      // Increment the click count for the given product
+      await axios.post(`https://api.countapi.xyz/update/products/${productId}`, {});
+      
+      // Update the local clickCounts state
+      setClickCounts((prevClickCounts) => ({
+        ...prevClickCounts,
+        [productId]: (prevClickCounts[productId] || 0) + 1,
+      }));
+    } catch (error) {
+      console.error('Error updating click count:', error);
+    }
   };
+
+  useEffect(() => {
+    // Fetch click counts from CountAPI for all products
+    const fetchClickCounts = async () => {
+      try {
+        const clickCounts: { [key: string]: number } = {}; // Define the type here
+  
+        for (const product of products) {
+          const response = await axios.get(`https://api.countapi.xyz/info/products/${product._id}`);
+          clickCounts[product._id] = response.data.value;
+        }
+  
+        setClickCounts(clickCounts);
+      } catch (error) {
+        console.error('Error fetching click counts:', error);
+      }
+    };
+  
+    fetchClickCounts(); // Call the function to fetch click counts
+  }, [products]); // Make sure to include the dependency array
+  
 
   if (products.length === 0) {
     return (
