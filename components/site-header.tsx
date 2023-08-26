@@ -26,7 +26,7 @@ export function SiteHeader() {
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [showResourcesDropdown, setShowResourcesDropdown] = useState(false);
 
-  const username = "admin";
+  const username = "adnmin";
   const password = "admin";
 
   const isAdminLoggedIn = (username: string, password: string) => {
